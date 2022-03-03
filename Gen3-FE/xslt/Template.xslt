@@ -40,7 +40,8 @@ http://www.templatemo.com/tm-466-cafe-house
 					<div class="loader-section section-left"></div>
 					<div class="loader-section section-right"></div>
 				</div>
-
+			
+				<!--navbar-->
 				<div class="tm-top-header">
 					<div class="container">
 						<div class="row">
@@ -468,6 +469,12 @@ http://www.templatemo.com/tm-466-cafe-house
 	</xsl:template>
 
 	<xsl:template name="Contacto">
+		<!--Ctrl + K + C para agregar comentario-->
+		<!--agregar referencia a la api de google-->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWeeateTaYGqsHhNcmoDfT7Us-vLDZVPs&amp;sensor=false&amp;language=en"></script>
+		
+		<script src="js/geolocalizacion.js"></script>
+			
 		<section class="tm-welcome-section">
 			<div class="container tm-position-relative">
 				<div class="tm-lights-container">
@@ -497,15 +504,15 @@ http://www.templatemo.com/tm-466-cafe-house
 			<div class="container" id="main">
 				<section class="tm-section row">
 					<h2 class="col-lg-12 margin-bottom-30">Formulario de reservación</h2>
-					<form action="#" method="post" class="tm-contact-form" oninput="Total.value=contact_personas.valueAsNumber + contact_adicionales.valueAsNumber">
+					<form action="contacto.aspx" method="post" class="tm-contact-form" oninput="Total.value=contact_personas.valueAsNumber + contact_adicionales.valueAsNumber">
 						<div class="col-lg-6 col-md-6">
 							<div class="form-group">
 								<label class="form-label">Nombre</label>
-								<input type="text" id="contact_name" name="contact-name" class="form-control" placeholder="Nombre completo" required="true" />
+								<input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Nombre completo" required="true" />
 							</div>
 							<div class="form-group">
 								<label class="form-label">Correo</label>
-								<input type="email" id="contact-email" name="contact-email" class="form-control" placeholder="Correo electrónico" required="true" />
+								<input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Correo electrónico" required="true" />
 							</div>
 							<div class="form-group">
 								<label class="form-label">Número de personas</label>
@@ -572,8 +579,8 @@ http://www.templatemo.com/tm-466-cafe-house
     var today = yyyy + '-' + mm + '-' + dd;
     $("#contact_fecha").attr("min", today);
     $("#contact_fecha").val(today);
-    //getGeo();
-    //dibujaMapa(19.0610357, -98.3038035);
+    getGeo();
+    dibujaMapa(19.0610357, -98.3038035);
 });
 ]]>
 
