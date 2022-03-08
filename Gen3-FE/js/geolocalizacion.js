@@ -35,6 +35,7 @@ function processGeocoder(result, status) {
         if (result[0]) {
             //desplegar dirección
             var direccion = result[0].formatted_address;//"Blvd. San Felipe 226 Valle del Ángel, Puebla, Pue - México"
+            $("#direccion").html(direccion);
         }
         else {
             error("Google no retornó resultados");

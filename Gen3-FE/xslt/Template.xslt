@@ -13,11 +13,8 @@
 				<meta charset="utf-8"/>
 				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<meta name="viewport" content="width=device-width, initial-scale=1"/>
-				<title>Cafe House Template</title>
-				<!-- 
-Cafe House Template
-http://www.templatemo.com/tm-466-cafe-house
--->
+				<title>La Esquina - Restaurant</title>
+			
 				<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css'/>
 				<link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'/>
 				<link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -32,6 +29,8 @@ http://www.templatemo.com/tm-466-cafe-house
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 				<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+			<script type="text/javascript" src="js/templatemo-script.js"></script>
+				<!-- Templatemo Script -->
 			</head>
 
 			<body>
@@ -40,7 +39,7 @@ http://www.templatemo.com/tm-466-cafe-house
 					<div class="loader-section section-left"></div>
 					<div class="loader-section section-right"></div>
 				</div>
-			
+
 				<!--navbar-->
 				<div class="tm-top-header">
 					<div class="container">
@@ -96,7 +95,7 @@ http://www.templatemo.com/tm-466-cafe-house
 					</xsl:when>
 
 					<xsl:when test="$TipoMenu=3">
-						<h1>Mostrar contenido de Play Room</h1>
+						<xsl:call-template name="PlayRoom"/>
 					</xsl:when>
 
 					<xsl:otherwise>
@@ -168,11 +167,8 @@ http://www.templatemo.com/tm-466-cafe-house
 				</footer>
 				<!-- Footer content-->
 
-				<!-- JS -->
-
-				<!-- jQuery -->
-				<script type="text/javascript" src="js/templatemo-script.js"></script>
-				<!-- Templatemo Script -->
+				
+				
 			</body>
 
 		</html>
@@ -472,9 +468,9 @@ http://www.templatemo.com/tm-466-cafe-house
 		<!--Ctrl + K + C para agregar comentario-->
 		<!--agregar referencia a la api de google-->
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWeeateTaYGqsHhNcmoDfT7Us-vLDZVPs&amp;sensor=false&amp;language=en"></script>
-		
+
 		<script src="js/geolocalizacion.js"></script>
-			
+
 		<section class="tm-welcome-section">
 			<div class="container tm-position-relative">
 				<div class="tm-lights-container">
@@ -580,10 +576,93 @@ http://www.templatemo.com/tm-466-cafe-house
     $("#contact_fecha").attr("min", today);
     $("#contact_fecha").val(today);
     getGeo();
-    dibujaMapa(19.0610357, -98.3038035);
+    dibujaMapa(19.071947986616152, -98.21890729081655);
 });
 ]]>
 
 		</script>
+	</xsl:template>
+
+	<xsl:template name="PlayRoom">
+		<script src="/js/dragndrop.js"></script>
+		<section class="tm-welcome-section">
+			<div class="container tm-position-relative">
+				<div class="tm-lights-container">
+					<img src="img/light.png" alt="Light" class="light light-1"/>
+					<img src="img/light.png" alt="Light" class="light light-2"/>
+					<img src="img/light.png" alt="Light" class="light light-3"/>
+				</div>
+				<div class="row tm-welcome-content">
+					<h2 class="white-text tm-handwriting-font tm-welcome-header">
+						<img src="img/header-line.png" alt="Line" class="tm-header-line"/>PlayRoom<img src="img/header-line.png" alt="Line" class="tm-header-line"/>
+					</h2>
+					<h2 class="gold-text tm-welcome-header-2">
+						<xsl:value-of select="Datos/NombreRestaurant"/>
+					</h2>
+					<p class="gray-text tm-welcome-description">
+						<text id="direccion" class="gold-text">
+							<![CDATA[Video, Audio y Drag & Drop]]>
+						</text>
+						<div id="video">
+							<video width="100%" controls="true" poster="/img/wrc.jpg">
+								<source src="multimedia/wrc.mp4">
+								</source>
+							</video>
+						</div>
+					</p>
+					<a href="#main" class="tm-more-button tm-more-button-welcome">Jugar</a>
+				</div>
+				<img src="img/table-set.png" alt="Table Set" class="tm-table-set img-responsive"/>
+			</div>
+		</section>
+		<div class="tm-main-section light-gray-bg">
+			<div class="container" id="main">
+				<section class="tm-section row">
+					<h2 class="col-lg-12 margin-bottom-30"><![CDATA[Drag & Drop]]></h2>
+
+					<!--Pintar cajas del drag & drop-->
+					<div id="cuadro1" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
+
+						<div class="cuadradito" id="arrastrable1" draggable="true" ondragstart="start(event)" ondragend="end(event)">
+						</div>
+
+						<div class="cuadradito" id="arrastrable2" draggable="true" ondragstart="start(event)" ondragend="end(event)">
+						</div>
+
+						<div class="cuadradito" id="arrastrable3" draggable="true" ondragstart="start(event)" ondragend="end(event)">
+						</div>
+					</div>
+
+					<div id="cuadro2" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
+					</div>
+
+					<div id="cuadro3" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return clonar(event)">
+					</div>
+
+					<div id="papelera" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return eliminar(event)">
+
+
+
+
+					</div>
+
+				</section>
+				<section class="tm-section-row">
+					<h2 class="col-lg-12 margin-bottom-30">
+						Audio HTML5
+					</h2>
+					<div id="ContenedorAudio">
+						<div id="fotoAudio" style="width=100%;">
+							<img src="img/wrc2.jpg" width="100%">
+							</img>
+							<audio controls="true" style="width:100%">
+								<source src="/multimedia/audio.mp3">
+								</source>
+							</audio>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
 	</xsl:template>
 </xsl:stylesheet>
